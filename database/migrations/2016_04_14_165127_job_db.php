@@ -34,10 +34,10 @@ class JobDb extends Migration
             $table->longText('problem');
 
             $table->integer('owner')->unsigned();
-            $table->foreign('owner')->references('id')->on('users');
+            $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('job_holder')->unsigned()->nullable();
-            $table->foreign('job_holder')->references('id')->on('users');
+            $table->foreign('job_holder')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('position');
             $table->string('location');
@@ -56,27 +56,27 @@ class JobDb extends Migration
 
         Schema::create('job_skill', function (Blueprint $table) {
             $table->integer('job_id')->unsigned();
-            $table->foreign('job_id')->references('id')->on('job');
+            $table->foreign('job_id')->references('id')->on('job')->onDelete('cascade');
             $table->integer('skill_id')->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skill');
+            $table->foreign('skill_id')->references('id')->on('skill')->onDelete('cascade');
             $table->timestamps();
 
         });
 
         Schema::create('user_skill', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('skill_id')->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skill');
+            $table->foreign('skill_id')->references('id')->on('skill')->onDelete('cascade');
             $table->timestamps();
 
         });
 
         Schema::create('applications', function (Blueprint $table) {
             $table->integer('job_id')->unsigned();
-            $table->foreign('job_id')->references('id')->on('job');
+            $table->foreign('job_id')->references('id')->on('job')->onDelete('cascade');
             $table->integer('applicant')->unsigned();
-            $table->foreign('applicant')->references('id')->on('users');
+            $table->foreign('applicant')->references('id')->on('users')->onDelete('cascade');
             $table->longText('answer');
             $table->timestamps();
             

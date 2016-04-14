@@ -11,7 +11,7 @@ use App\Job;
 use App\SkillMapJob;
 use App\SkillMapUser;
 use App\User;
-
+use View;
 use Auth;
 
 class HomeController extends Controller
@@ -33,7 +33,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $jobs_posted = Job::where('owner','=',Auth::user()->id)->get();
+        $current_jobs = Job::where('job_holder','=',Auth::user()->id)->get();
+        $applied_jobs = Application::join('job','applications.job_id', '=', 'job.id')->where('applicant','=',Auth::user()->id)->get();
+
+        return view('home',array("jobs_posted"=>$jobs_posted, "current_jobs"=>$current_jobs, "applied_jobs"=>$applied_jobs));
     }
 
     public function jobAddView()
@@ -78,6 +82,13 @@ class HomeController extends Controller
             $map->skill_id = $sk->id;
             $map->save();
         }
+        return redirect('/home');
+    }
+
+    public function jobDelete($id)
+    {
+
+        Job::find($id)->delete();
         return redirect('/home');
     }
 }
