@@ -12,6 +12,7 @@
                 <a href="{{ route('job', ['id'=>$job->id]) }}"><h2>{{$job->description}}</h2></a>
                 <p class="lead">{{$job->problem}}</p>
                 <a class="btn btn-danger" href="{{ route('job.delete',['id'=>$job->id]) }}"><i class="fa fa-plus"></i> Delete This Job</a>
+                <a class="btn btn-primary" href="{{ route('job.viewApplicants',['id'=>$job->id]) }}"> View All Applicants</a>
             @endforeach
             </div>
 
@@ -55,6 +56,8 @@
                 @endforeach
                 </div>
             @endif
+
+        
 
             <div class="row">
                 <div class="features">
