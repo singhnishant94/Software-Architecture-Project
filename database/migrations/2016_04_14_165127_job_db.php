@@ -25,6 +25,7 @@ class JobDb extends Migration
             $table->string('email')->index();
             $table->string('token')->index();
             $table->timestamp('created_at');
+
         });
 
         Schema::create('job', function (Blueprint $table) {
@@ -41,11 +42,16 @@ class JobDb extends Migration
             $table->string('position');
             $table->string('location');
             $table->string('salary');
+            $table->string('skills');
+            $table->timestamps();
+
         });
 
         Schema::create('skill', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->timestamps();
+
         });
 
         Schema::create('job_skill', function (Blueprint $table) {
@@ -53,6 +59,8 @@ class JobDb extends Migration
             $table->foreign('job_id')->references('id')->on('job');
             $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skill');
+            $table->timestamps();
+
         });
 
         Schema::create('user_skill', function (Blueprint $table) {
@@ -60,6 +68,8 @@ class JobDb extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skill');
+            $table->timestamps();
+
         });
 
         Schema::create('applications', function (Blueprint $table) {
@@ -68,6 +78,8 @@ class JobDb extends Migration
             $table->integer('applicant')->unsigned();
             $table->foreign('applicant')->references('id')->on('users');
             $table->longText('answer');
+            $table->timestamps();
+            
 
         });
     }
