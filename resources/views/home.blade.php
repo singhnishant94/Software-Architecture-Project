@@ -3,12 +3,59 @@
 @section('content')
  <section id="feature" class="transparent-bg">
         <div class="container">
-           <div class="center wow fadeInDown">
+            <div class="center wow fadeInDown">
                 <h2>Jobs You have Posted</h2>
             </div>
+            
+            <div class="get-started center wow fadeInDown">
+            @foreach($jobs_posted as $key => $job)
+                <h2>{{$job->description}}</h2>
+                <p class="lead">{{$job->problem}}</p>
+                <a class="btn btn-danger" href="{{ route('job.delete',['id'=>$job->id]) }}"><i class="fa fa-plus"></i> Delete This Job</a>
+            @endforeach
+            </div>
+
             <div class="center wow fadeInDown">
                 <a class="btn btn-success" href="{{ route('job.add') }}"><i class="fa fa-plus"></i> Post New Job</a>
             </div>
+
+            <div class="center wow fadeInDown">
+                <h2>Jobs You Currently Have</h2>
+            </div>
+        
+            
+            @if (sizeof($current_jobs) == 0)
+                <div class="get-started center wow fadeInDown"> 
+                Sorry, you don't have a job currently!!!
+                </div>
+            @else
+                <div class="get-started center wow fadeInDown">
+                @foreach($current_jobs as $key => $job)
+                    <h2>{{$job->description}}</h2>
+                    <p class="lead">{{$job->problem}}</p>
+                @endforeach
+                </div>
+            @endif 
+
+            <div class="center wow fadeInDown">
+                <h2>Jobs You Have Applied For</h2>
+            </div>
+            
+            
+            @if (sizeof($applied_jobs) == 0)
+                <div class="get-started center wow fadeInDown"> 
+                Sorry, you haven't applied yet!!!
+                </div>
+            @else
+
+                <div class="get-started center wow fadeInDown">
+                @foreach($applied_jobs as $key => $job)
+                    <h2>{{$job->description}}</h2>
+                    <p class="lead">{{$job->problem}}</p>
+                @endforeach
+                </div>
+            @endif
+
             <div class="row">
                 <div class="features">
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">

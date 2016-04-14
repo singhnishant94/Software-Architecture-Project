@@ -21,5 +21,6 @@ Route::get('/post-job',array('as'=>'job.add','uses'=>'JobController@jobAddView')
 Route::post('/post-job',array('as'=>'job.add','uses'=>'JobController@jobAdd'));
 Route::get('/job/{id}',array('as'=>'job','uses'=>'JobController@jobView'));
 Route::post('/job/{id}/apply',array('as'=>'job','uses'=>'JobController@jobApply'));
+Route::get('/delete-job/{id}',array('as'=>'job.delete','uses'=>'HomeController@jobDelete'));
 
 
