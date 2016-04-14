@@ -80,7 +80,9 @@ class JobController extends Controller
     		return redirect('/home');
     	}
     	$ishaving = !is_null(Application::where('applicant',Auth::user()->id)->where('job_id',$id)->first());
-    	return view('job', array('job'=>$job,'ishaving'=>$ishaving,'skills'=>explode(",", $job->skills)));
+
+    	$applicants = Application::where('job_id',$id)->get();
+    	return view('job', array('job'=>$job,'ishaving'=>$ishaving,'applicants'=>$applicants,'skills'=>explode(",", $job->skills)));
     }
 
     public function jobApply($id,Request $request)
@@ -106,5 +108,12 @@ class JobController extends Controller
 
     	return Redirect::back();
         
+    }
+
+    public function jobAll()
+    {
+    	$jobs = Job::all();
+
+    	return view('alljobs',['jobs'=>$jobs,'skills'=>Skill::all()]);
     }
 }

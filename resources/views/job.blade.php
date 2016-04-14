@@ -15,7 +15,7 @@
                                     <div class="entry-meta">
                                         <span id="publish_date">{{date('d F', time($job->created_at))}}</span>
                                         <span><i class="fa fa-user"></i> <a href="#"> {{Auth::user()->name}}</a></span>
-                                        <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">2 Applicants</a></span>
+                                        <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">{{sizeof($applicants)}} Applicants</a></span>
                                         
                                     </div>
                                 </div>
@@ -41,48 +41,7 @@
                         </div><!--/.blog-item-->
                         
                     
-                        <h1 id="comments_title">5 Comments</h1>
-                        <div class="media comment_section">
-                            <div class="pull-left post_comments">
-                                <a href="#"><img src="images/blog/girl.png" class="img-circle" alt="" /></a>
-                            </div>
-                            <div class="media-body post_reply_comments">
-                                <h3>Marsh</h3>
-                                <h4>NOVEMBER 9, 2013 AT 9:15 PM</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-                                <a href="#">Reply</a>
-                            </div>
-                        </div> 
-                        <div class="media comment_section">
-                            <div class="pull-left post_comments">
-                                <a href="#"><img src="images/blog/boy2.png" class="img-circle" alt="" /></a>
-                            </div>
-                            <div class="media-body post_reply_comments">
-                                <h3>Marsh</h3>
-                                <h4>NOVEMBER 9, 2013 AT 9:15 PM</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-                                <a href="#">Reply</a>
-                            </div>
-                        </div> 
-                        <div class="media comment_section">
-                            <div class="pull-left post_comments">
-                                <a href="#"><img src="images/blog/boy3.png" class="img-circle" alt="" /></a>
-                            </div>
-                            <div class="media-body post_reply_comments">
-                                <h3>Marsh</h3>
-                                <h4>NOVEMBER 9, 2013 AT 9:15 PM</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-                                <a href="#">Reply</a>
-                            </div>
-                        </div> 
-
-
-                        <div id="contact-page clearfix">
-                            <div class="status alert alert-success" style="display: none"></div>
-                            <div class="message_heading">
-                                <h4>Apply for Job</h4>
-                                <p>Fill the form to apply for job</p>
-                            </div> 
+                    
       						
 
                         @if($ishaving)

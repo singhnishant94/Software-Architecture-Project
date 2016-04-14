@@ -24,3 +24,7 @@ Route::post('/job/{id}/apply',array('as'=>'job.apply','uses'=>'JobController@job
 Route::get('/delete-job/{id}',array('as'=>'job.delete','uses'=>'HomeController@jobDelete'));
 
 
+Route::get('/jobs',array('as'=>'job.all','uses'=>'JobController@jobAll'));
+
+
+
