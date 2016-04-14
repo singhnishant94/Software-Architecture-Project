@@ -5,10 +5,11 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
-
+                <div class="center wow fadeInDown">
+                    <h2>Welcome to Naukri Mandi</h2>
+                </div>
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                <img src="/images/hireme.jpg" style="max-width:100%; max-height:100%"></img>
                 </div>
             </div>
         </div>

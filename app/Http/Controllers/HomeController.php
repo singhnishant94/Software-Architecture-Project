@@ -98,4 +98,10 @@ class HomeController extends Controller
         $applicants = Application::join('users','applications.applicant', '=', 'users.id')->where('job_id','=',$id)->get();
         return view('applicants', array("applicants"=>$applicants));
     }
+
+    public function aboutus()
+    {
+
+        return view('aboutus');
+    }
 }
