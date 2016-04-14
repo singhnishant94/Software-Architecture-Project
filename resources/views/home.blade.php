@@ -9,7 +9,7 @@
             
             <div class="get-started center wow fadeInDown">
             @foreach($jobs_posted as $key => $job)
-                <h2>{{$job->description}}</h2>
+                <a href="{{ route('job', ['id'=>$job->id]) }}"><h2>{{$job->description}}</h2></a>
                 <p class="lead">{{$job->problem}}</p>
                 <a class="btn btn-danger" href="{{ route('job.delete',['id'=>$job->id]) }}"><i class="fa fa-plus"></i> Delete This Job</a>
             @endforeach
@@ -31,7 +31,7 @@
             @else
                 <div class="get-started center wow fadeInDown">
                 @foreach($current_jobs as $key => $job)
-                    <h2>{{$job->description}}</h2>
+                    <a href="{{ route('job', ['id'=>$job->id]) }}"><h2>{{$job->description}}</h2></a>
                     <p class="lead">{{$job->problem}}</p>
                 @endforeach
                 </div>
