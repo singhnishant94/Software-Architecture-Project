@@ -22,6 +22,9 @@ Route::post('/post-job',array('as'=>'job.add','uses'=>'JobController@jobAdd'));
 Route::get('/job/{id}',array('as'=>'job','uses'=>'JobController@jobView'));
 Route::post('/job/{id}/apply',array('as'=>'job.apply','uses'=>'JobController@jobApply'));
 Route::get('/delete-job/{id}',array('as'=>'job.delete','uses'=>'HomeController@jobDelete'));
+Route::get('/applicants/{id}',array('as'=>'job.viewApplicants','uses'=>'HomeController@viewApplicants'));
+
+
 
 
 Route::get('/jobs',array('as'=>'job.all','uses'=>'JobController@jobAll'));

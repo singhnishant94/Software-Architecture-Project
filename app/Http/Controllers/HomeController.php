@@ -91,4 +91,11 @@ class HomeController extends Controller
         Job::find($id)->delete();
         return redirect('/home');
     }
+
+    public function viewApplicants($id)
+    {
+
+        $applicants = Application::join('users','applications.applicant', '=', 'users.id')->where('job_id','=',$id)->get();
+        return view('applicants', array("applicants"=>$applicants));
+    }
 }
